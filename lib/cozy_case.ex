@@ -37,19 +37,19 @@ defmodule CozyCase do
   of maps:
 
       iex> CozyCase.snake_case(%{
-      iex>   "FamilyMembers" => [
-      iex>     %{
-      iex>       "Name" => "Lily",
-      iex>       "Age" => 50,
-      iex>       "Hobbies" => ["Dreaming", "Singing"]
-      iex>     },
-      iex>     %{
-      iex>       "Name" => "Charlie",
-      iex>       "Age" => 55,
-      iex>       "Hobbies" => ["Dreaming", "Singing"]
-      iex>     }
-      iex>   ]
-      iex> })
+      ...>   "FamilyMembers" => [
+      ...>     %{
+      ...>       "Name" => "Lily",
+      ...>       "Age" => 50,
+      ...>       "Hobbies" => ["Dreaming", "Singing"]
+      ...>     },
+      ...>     %{
+      ...>       "Name" => "Charlie",
+      ...>       "Age" => 55,
+      ...>       "Hobbies" => ["Dreaming", "Singing"]
+      ...>     }
+      ...>   ]
+      ...> })
       %{
         "family_members" => [
           %{"name" => "Lily", "age" => 50, "hobbies" => ["Dreaming", "Singing"]},
@@ -60,17 +60,17 @@ defmodule CozyCase do
   For lists, these functions convert the keys of maps in lists recursively:
 
       iex> CozyCase.snake_case([
-      iex>     %{
-      iex>       "Name" => "Lily",
-      iex>       "Age" => 50,
-      iex>       "Hobbies" => ["Dreaming", "Singing"]
-      iex>     },
-      iex>     %{
-      iex>       "Name" => "Charlie",
-      iex>       "Age" => 55,
-      iex>       "Hobbies" => ["Dreaming", "Singing"]
-      iex>     }
-      iex>   ])
+      ...>     %{
+      ...>       "Name" => "Lily",
+      ...>       "Age" => 50,
+      ...>       "Hobbies" => ["Dreaming", "Singing"]
+      ...>     },
+      ...>     %{
+      ...>       "Name" => "Charlie",
+      ...>       "Age" => 55,
+      ...>       "Hobbies" => ["Dreaming", "Singing"]
+      ...>     }
+      ...>   ])
       [
         %{"name" => "Lily", "age" => 50, "hobbies" => ["Dreaming", "Singing"]},
         %{"name" => "Charlie", "age" => 55, "hobbies" => ["Dreaming", "Singing"]}
