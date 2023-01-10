@@ -9,25 +9,14 @@ Add `cozy_case` to the list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:cozy_case, "~> 0.1.0"}
+    {:cozy_case, version}
   ]
 end
 ```
 
 ## Usage
 
-For more information, see the [documentation](https://hexdocs.pm/cozy_case).
-
-## Common naming conventions
-
-| name        | example           |
-| ----------- | ----------------- |
-| snake case  | `welcome_message` |
-| kebab case  | `welcome-message` |
-| camel case  | `welcomeMessage`  |
-| pascal case | `WelcomeMessage`  |
-
-Read [Naming convention - Examples of multiple-word identifier formats](<https://en.wikipedia.org/w/index.php?title=Naming_convention_(programming)&oldid=1126175049#Examples_of_multiple-word_identifier_formats>) for more multiple-word identifier formats.
+For more information, see the [documentation](https://hexdocs.pm/cozy_case/CozyCase.html).
 
 ## Acknowledgments
 

@@ -3,16 +3,27 @@ defmodule CozyCase do
   Convert data between common naming conventions, such as snake case, kebab case, camel case and
   pascal case.
 
-  Currently, this module provides 4 main functions:
+  Currently, this module provides these main functions:
 
   + `snake_case/1`
   + `kebab_case/1`
   + `camel_case/1`
   + `pascal_case/1`
 
+  ## Common naming conventions
+
+  | name        | example           |
+  | ----------- | ----------------- |
+  | snake case  | `welcome_message` |
+  | kebab case  | `welcome-message` |
+  | camel case  | `welcomeMessage`  |
+  | pascal case | `WelcomeMessage`  |
+
+  Read [Naming convention - Examples of multiple-word identifier formats](https://en.wikipedia.org/w/index.php?title=Naming_convention_(programming)&oldid=1126175049#Examples_of_multiple-word_identifier_formats) for more multiple-word identifier formats.
+
   ## Examples
 
-  All these 4 functions have the same intefaces.
+  All these functions have the same intefaces.
 
   For strings or atoms, these functions convert them directly:
 
