@@ -1,6 +1,6 @@
 defmodule CozyCase do
   @moduledoc ~S"""
-  Convert data between common naming conventions, such as snake case, kebab case, camel case and
+  Converts data between common naming conventions, such as snake case, kebab case, camel case and
   pascal case.
 
   Currently, this module provides these main functions:

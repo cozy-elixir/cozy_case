@@ -1,6 +1,6 @@
 # CozyCase
 
-> Convert data between common naming conventions, such as snake case, kebab case, camel case and pascal case.
+> Converts data between common naming conventions, such as snake case, kebab case, camel case and pascal case.
 
 ## Installation
 
