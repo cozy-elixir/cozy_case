@@ -1,11 +1,10 @@
 # CozyCase
 
-**TODO: Add description**
+> Convert data between different naming conventions, such as snake case, kebab case, camel case and pascal case.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `cozy_case` to your list of dependencies in `mix.exs`:
+Add `cozy_case` to the list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +14,40 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/cozy_case>.
+## Usage
 
+For more information, see the [documentation](https://hexdocs.pm/cozy_case).
+
+## Different naming conventions
+
+### snake case
+
+```text
+welcome_message = "Hello World"
+```
+
+### kebab case
+
+```text
+welcome-message = "Hello World"
+```
+
+### camel case
+
+```text
+welcomeMessage = "Hello World"
+```
+
+### pascal case
+
+```text
+WelcomeMessage = "Hello World"
+```
+
+## Acknowledgments
+
+This repo is forked from [johnnyji/proper_case](https://github.com/johnnyji/proper_case), but only provides core functions for conversion.
+
+## License
+
+Apache License 2.0
