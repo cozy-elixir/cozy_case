@@ -1,6 +1,6 @@
 # CozyCase
 
-> Convert data between different naming conventions, such as snake case, kebab case, camel case and pascal case.
+> Convert data between common naming conventions, such as snake case, kebab case, camel case and pascal case.
 
 ## Installation
 
@@ -18,31 +18,16 @@ end
 
 For more information, see the [documentation](https://hexdocs.pm/cozy_case).
 
-## Different naming conventions
+## Common naming conventions
 
-### snake case
+| name        | example           |
+| ----------- | ----------------- |
+| snake case  | `welcome_message` |
+| kebab case  | `welcome-message` |
+| camel case  | `welcomeMessage`  |
+| pascal case | `WelcomeMessage`  |
 
-```text
-welcome_message = "Hello World"
-```
-
-### kebab case
-
-```text
-welcome-message = "Hello World"
-```
-
-### camel case
-
-```text
-welcomeMessage = "Hello World"
-```
-
-### pascal case
-
-```text
-WelcomeMessage = "Hello World"
-```
+Read [Naming convention - Examples of multiple-word identifier formats](<https://en.wikipedia.org/w/index.php?title=Naming_convention_(programming)&oldid=1126175049#Examples_of_multiple-word_identifier_formats>) for more multiple-word identifier formats.
 
 ## Acknowledgments
 
