@@ -31,7 +31,7 @@ Read [Naming convention - Examples of multiple-word identifier formats](<https:/
 
 ## Acknowledgments
 
-This repo is forked from [johnnyji/proper_case](https://github.com/johnnyji/proper_case), but only provides core functions for conversion.
+This repo is forked from [nurugger07/inflex](https://github.com/nurugger07/inflex).
 
 ## License
 
