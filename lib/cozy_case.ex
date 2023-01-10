@@ -1,5 +1,5 @@
 defmodule CozyCase do
-  @moduledoc """
+  @moduledoc ~S"""
   Convert data between common naming conventions, such as snake case, kebab case, camel case and
   pascal case.
 
@@ -75,6 +75,41 @@ defmodule CozyCase do
         %{"name" => "Lily", "age" => 50, "hobbies" => ["Dreaming", "Singing"]},
         %{"name" => "Charlie", "age" => 55, "hobbies" => ["Dreaming", "Singing"]}
       ]
+
+  ## Integrate with other packages
+
+  `CozyCase` doesn't provide higher-level wrappers. Because everything is a function, it's very
+  easy to integrate `CozyCase` with other packages.
+
+  ### [`plug`](https://hexdocs.pm/plug)
+
+  Converts params in `%Plug.Conn{}` to snake case:
+
+      defmodule DemoWeb.Plug.SnakeCaseParams do
+        @behaviour Plug
+
+        @impl true
+        def init(opts), do: opts
+
+        @impl true
+        def call(%{params: params} = conn, _opts) do
+          %{conn | params: CozyCase.snake_case(params)}
+        end
+      end
+
+  ### [`jason`](https://hexdocs.pm/jason)
+
+  Decode a JSON string:
+
+      iex> json = "{\"Age\":23,\"FamilyMembers\":[],\"Name\":\"Lenna\"}"
+      iex> Jason.decode!(json, keys: &CozyCase.snake_case/1)
+      %{"name" => "Lenna", "age" => 23, "family_members" => []}
+
+  Encode a map as a JSON string:
+
+      iex> map = %{"name" => "Lenna", "age" => 23, "family_members" => []}
+      iex> map |> CozyCase.camel_case() |> Jason.encode!()
+      "{\"age\":23,\"familyMembers\":[],\"name\":\"Lenna\"}"
 
   """
 
