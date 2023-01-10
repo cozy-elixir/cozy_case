@@ -83,15 +83,21 @@ defmodule CozyCase do
   alias CozyCase.CamelCase
   alias CozyCase.PascalCase
 
+  @type accepted_data_types() :: String.t() | atom() | map() | list()
+
+  @spec snake_case(accepted_data_types()) :: String.t()
   def snake_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &SnakeCase.convert/1)
   def snake_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &SnakeCase.convert/1)
 
+  @spec kebab_case(accepted_data_types()) :: String.t()
   def kebab_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &KebabCase.convert/1)
   def kebab_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &KebabCase.convert/1)
 
+  @spec camel_case(accepted_data_types()) :: String.t()
   def camel_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &CamelCase.convert/1)
   def camel_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &CamelCase.convert/1)
 
+  @spec pascal_case(accepted_data_types()) :: String.t()
   def pascal_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &PascalCase.convert/1)
   def pascal_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &PascalCase.convert/1)
 
