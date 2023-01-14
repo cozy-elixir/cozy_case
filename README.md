@@ -1,5 +1,7 @@
 # CozyCase
 
+[![CI](https://github.com/cozy-elixir/cozy_case/actions/workflows/ci.yml/badge.svg)](https://github.com/cozy-elixir/cozy_case/actions/workflows/ci.yml)
+
 > Converts data between common multiple-word identifier formats, such as snake case, kebab case, camel case and pascal case.
 
 ## Installation
