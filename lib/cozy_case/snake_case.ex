@@ -1,6 +1,7 @@
 defmodule CozyCase.SnakeCase do
   @moduledoc false
 
+  @doc false
   def convert(string) when is_binary(string) do
     string
     |> String.replace(~r/([A-Z]+)([A-Z][a-z])/, "\\1_\\2")

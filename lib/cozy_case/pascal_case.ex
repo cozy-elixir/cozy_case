@@ -3,6 +3,7 @@ defmodule CozyCase.PascalCase do
 
   @split_regex ~r/(?:^|[-_])|(?=[A-Z][a-z])/
 
+  @doc false
   def convert(string) when is_binary(string) do
     string
     |> then(&Regex.split(@split_regex, &1))
@@ -17,5 +18,5 @@ defmodule CozyCase.PascalCase do
     [capitalize(h)] ++ pascalize_list(tail)
   end
 
-  def capitalize(word), do: String.capitalize(word)
+  defp capitalize(word), do: String.capitalize(word)
 end
