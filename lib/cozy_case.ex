@@ -1,7 +1,7 @@
 defmodule CozyCase do
   @moduledoc ~S"""
-  Converts data between common naming conventions, such as snake case, kebab case, camel case and
-  pascal case.
+  Converts data between common multiple-word identifier formats, such as snake case, kebab case,
+  camel case and pascal case.
 
   Currently, this module provides these main functions:
 
@@ -10,7 +10,7 @@ defmodule CozyCase do
   + `camel_case/1`
   + `pascal_case/1`
 
-  ## Common naming conventions
+  ## Multiple-word identifier formats
 
   | name        | example           |
   | ----------- | ----------------- |
@@ -19,7 +19,7 @@ defmodule CozyCase do
   | camel case  | `welcomeMessage`  |
   | pascal case | `WelcomeMessage`  |
 
-  Read [Naming convention - Examples of multiple-word identifier formats](https://en.wikipedia.org/w/index.php?title=Naming_convention_(programming)&oldid=1126175049#Examples_of_multiple-word_identifier_formats) for more multiple-word identifier formats.
+  > Read [Examples of multiple-word identifier formats](https://en.wikipedia.org/w/index.php?title=Naming_convention_(programming)&oldid=1126175049#Examples_of_multiple-word_identifier_formats) for more unsupported formats.
 
   ## Examples
 
@@ -33,7 +33,7 @@ defmodule CozyCase do
       iex> CozyCase.snake_case(HelloWorld)
       "hello_world"
 
-  For maps, there functions convert the keys of maps recursively, without touching the values
+  For maps, these functions convert the keys of maps recursively, without touching the values
   of maps:
 
       iex> CozyCase.snake_case(%{
@@ -111,6 +111,21 @@ defmodule CozyCase do
       iex> map |> CozyCase.camel_case() |> Jason.encode!()
       "{\"age\":23,\"familyMembers\":[],\"name\":\"Lenna\"}"
 
+  ## Note
+
+  `CozyCase` is created for the convertion between common multiple-word identifier formats.
+
+  Because of that, `CozyCase` doesn't handle spaces which are not used as part of indentifier.
+
+  As the user of `CozyCase`, you should NOT pass string containing spaces, or the result will be
+  surprising.
+
+      iex> CozyCase.snake_case("welCome Message")
+      "wel_come message"
+
+      iex> CozyCase.kebab_case("wel_Come Me_ssage")
+      "wel-come -me-ssage"
+
   """
 
   alias CozyCase.SnakeCase
@@ -120,18 +135,30 @@ defmodule CozyCase do
 
   @type accepted_data_types() :: String.t() | atom() | map() | list()
 
+  @doc """
+  Converts other supported cases to snake case.
+  """
   @spec snake_case(accepted_data_types()) :: String.t()
   def snake_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &SnakeCase.convert/1)
   def snake_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &SnakeCase.convert/1)
 
+  @doc """
+  Converts other supported cases to kebab case.
+  """
   @spec kebab_case(accepted_data_types()) :: String.t()
   def kebab_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &KebabCase.convert/1)
   def kebab_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &KebabCase.convert/1)
 
+  @doc """
+  Converts other supported cases to camel case.
+  """
   @spec camel_case(accepted_data_types()) :: String.t()
   def camel_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &CamelCase.convert/1)
   def camel_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &CamelCase.convert/1)
 
+  @doc """
+  Converts other supported cases to pascal case.
+  """
   @spec pascal_case(accepted_data_types()) :: String.t()
   def pascal_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &PascalCase.convert/1)
   def pascal_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &PascalCase.convert/1)
