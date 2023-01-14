@@ -9,7 +9,7 @@ defmodule CozyCase.MixProject do
     [
       app: :cozy_case,
       version: @version,
-      elixir: "~> 1.13",
+      elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: @description,
