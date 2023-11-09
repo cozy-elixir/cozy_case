@@ -139,59 +139,55 @@ defmodule CozyCase do
   Converts other supported cases to snake case.
   """
   @spec snake_case(accepted_data_types()) :: String.t()
-  def snake_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &SnakeCase.convert/1)
-  def snake_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &SnakeCase.convert/1)
+  def snake_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, SnakeCase)
+  def snake_case(term) when is_map(term) or is_list(term), do: convert_nest(term, SnakeCase)
 
   @doc """
   Converts other supported cases to kebab case.
   """
   @spec kebab_case(accepted_data_types()) :: String.t()
-  def kebab_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &KebabCase.convert/1)
-  def kebab_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &KebabCase.convert/1)
+  def kebab_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, KebabCase)
+  def kebab_case(term) when is_map(term) or is_list(term), do: convert_nest(term, KebabCase)
 
   @doc """
   Converts other supported cases to camel case.
   """
   @spec camel_case(accepted_data_types()) :: String.t()
-  def camel_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &CamelCase.convert/1)
-  def camel_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &CamelCase.convert/1)
+  def camel_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, CamelCase)
+  def camel_case(term) when is_map(term) or is_list(term), do: convert_nest(term, CamelCase)
 
   @doc """
   Converts other supported cases to pascal case.
   """
   @spec pascal_case(accepted_data_types()) :: String.t()
-  def pascal_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, &PascalCase.convert/1)
-  def pascal_case(term) when is_map(term) or is_list(term), do: convert_nest(term, &PascalCase.convert/1)
+  def pascal_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, PascalCase)
+  def pascal_case(term) when is_map(term) or is_list(term), do: convert_nest(term, PascalCase)
 
-  defp convert_plain(string, fun) when is_binary(string) do
-    fun.(string)
-  end
+  defp convert_plain(string, module) when is_binary(string), do: module.convert(string)
 
-  defp convert_plain(atom, fun) when is_atom(atom) do
+  defp convert_plain(atom, module) when is_atom(atom) do
     Atom.to_string(atom)
     |> case do
       "Elixir." <> rest -> rest
       string -> string
     end
-    |> fun.()
+    |> module.convert()
   end
 
-  defp convert_plain(any, _fun), do: any
+  defp convert_plain(any, _module), do: any
 
-  defp convert_nest(map, fun) when is_map(map) do
+  defp convert_nest(map, module) when is_map(map) do
     try do
       for {k, v} <- map,
           into: %{},
-          do: {convert_plain(k, fun), convert_nest(v, fun)}
+          do: {convert_plain(k, module), convert_nest(v, module)}
     rescue
       # not Enumerable
       Protocol.UndefinedError -> map
     end
   end
 
-  defp convert_nest(list, fun) when is_list(list) do
-    Enum.map(list, &convert_nest(&1, fun))
-  end
+  defp convert_nest(list, module) when is_list(list), do: Enum.map(list, &convert_nest(&1, module))
 
-  defp convert_nest(any, _fun), do: any
+  defp convert_nest(any, _module), do: any
 end
