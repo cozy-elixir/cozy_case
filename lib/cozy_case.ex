@@ -133,33 +133,35 @@ defmodule CozyCase do
   alias CozyCase.CamelCase
   alias CozyCase.PascalCase
 
-  @type accepted_data_types() :: String.t() | atom() | map() | list()
-
   @doc """
   Converts other supported cases to snake case.
   """
-  @spec snake_case(accepted_data_types()) :: String.t()
+  @spec snake_case(String.t() | atom()) :: String.t()
+  @spec snake_case(t) :: t when t: map() | list()
   def snake_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, SnakeCase)
   def snake_case(term) when is_map(term) or is_list(term), do: convert_nest(term, SnakeCase)
 
   @doc """
   Converts other supported cases to kebab case.
   """
-  @spec kebab_case(accepted_data_types()) :: String.t()
+  @spec kebab_case(String.t() | atom()) :: String.t()
+  @spec kebab_case(t) :: t when t: map() | list()
   def kebab_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, KebabCase)
   def kebab_case(term) when is_map(term) or is_list(term), do: convert_nest(term, KebabCase)
 
   @doc """
   Converts other supported cases to camel case.
   """
-  @spec camel_case(accepted_data_types()) :: String.t()
+  @spec camel_case(String.t() | atom()) :: String.t()
+  @spec camel_case(t) :: t when t: map() | list()
   def camel_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, CamelCase)
   def camel_case(term) when is_map(term) or is_list(term), do: convert_nest(term, CamelCase)
 
   @doc """
   Converts other supported cases to pascal case.
   """
-  @spec pascal_case(accepted_data_types()) :: String.t()
+  @spec pascal_case(String.t() | atom()) :: String.t()
+  @spec pascal_case(t) :: t when t: map() | list()
   def pascal_case(term) when is_binary(term) or is_atom(term), do: convert_plain(term, PascalCase)
   def pascal_case(term) when is_map(term) or is_list(term), do: convert_nest(term, PascalCase)
 
