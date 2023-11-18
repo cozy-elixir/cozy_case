@@ -1,7 +1,7 @@
 defmodule CozyCase.MixProject do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.3.0"
   @description "Converts data between common multiple-word identifier formats, such as snake case, kebab case, camel case and pascal case."
   @source_url "https://github.com/cozy-elixir/cozy_case"
 
