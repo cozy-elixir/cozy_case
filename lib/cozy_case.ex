@@ -124,7 +124,7 @@ defmodule CozyCase do
       "wel_come message"
 
       iex> CozyCase.kebab_case("wel_Come Me_ssage")
-      "wel-come -me-ssage"
+      "wel-come me-ssage"
 
   """
 

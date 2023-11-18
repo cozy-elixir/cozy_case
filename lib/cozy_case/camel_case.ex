@@ -1,7 +1,7 @@
 defmodule CozyCase.CamelCase do
   @moduledoc false
 
-  @split_regex ~r/(?:^|[-_])|(?=[A-Z][a-z])/
+  @split_regex ~r/(?:^|[-_])|(?<=[a-z\d])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])/
 
   @doc false
   def convert(string) when is_binary(string) do
