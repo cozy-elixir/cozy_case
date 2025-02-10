@@ -81,7 +81,7 @@ defmodule CozyCase do
   `CozyCase` doesn't provide higher-level wrappers. Because everything is a function, it's very
   easy to integrate `CozyCase` with other packages.
 
-  ### [`plug`](https://hexdocs.pm/plug)
+  ### With [`plug`](https://hexdocs.pm/plug)
 
   Converts params in `%Plug.Conn{}` to snake case:
 
@@ -97,7 +97,7 @@ defmodule CozyCase do
         end
       end
 
-  ### [`jason`](https://hexdocs.pm/jason)
+  ### With [`jason`](https://hexdocs.pm/jason)
 
   Decode a JSON string:
 
