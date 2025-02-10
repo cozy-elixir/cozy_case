@@ -32,10 +32,9 @@ defmodule CozyCase.MixProject do
   defp deps do
     [
       {:jason, "~> 1.0", only: [:dev, :test]},
-      {:ex_check, "~> 0.14.0", only: [:dev], runtime: false},
+      {:ex_check, ">= 0.0.0", only: [:dev], runtime: false},
       {:credo, ">= 0.0.0", only: [:dev], runtime: false},
       {:dialyxir, ">= 0.0.0", only: [:dev], runtime: false},
-      {:doctor, ">= 0.0.0", only: [:dev], runtime: false},
       {:ex_doc, ">= 0.0.0", only: [:dev], runtime: false},
       {:mix_audit, ">= 0.0.0", only: [:dev], runtime: false}
     ]
@@ -43,18 +42,17 @@ defmodule CozyCase.MixProject do
 
   defp docs do
     [
-      extras: ["README.md"],
-      main: "readme",
       source_url: @source_url,
-      source_ref: @version
+      source_ref: "v#{@version}"
     ]
   end
 
   defp package do
     [
-      exclude_patterns: [],
       licenses: ["Apache-2.0"],
-      links: %{GitHub: @source_url}
+      links: %{
+        GitHub: @source_url
+      }
     ]
   end
 
@@ -63,8 +61,8 @@ defmodule CozyCase.MixProject do
   end
 
   defp tag_release(_) do
-    Mix.shell().info("Tagging release as #{@version}")
-    System.cmd("git", ["tag", @version])
+    Mix.shell().info("Tagging release as v#{@version}")
+    System.cmd("git", ["tag", "v#{@version}"])
     System.cmd("git", ["push", "--tags"])
   end
 end
